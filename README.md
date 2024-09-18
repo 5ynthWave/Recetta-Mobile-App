@@ -8,7 +8,7 @@ Information includes— but is not limited to— recipe images, ingredients, coo
 cookware, and nutritional/historical information. 
 
 ## Frameworks used
-React Native, Tamagui, Expo
+Expo, React Native, Tamagui
 
 ## Installation
 Currently unavailable.
