@@ -10,7 +10,7 @@ Information includes— but is not limited to— recipe images, ingredients, coo
 cookware, and nutritional/historical information. 
 
 ## Frameworks used
-Expo, React Native, Tamagui
+Expo, React Native
 
 ## Installation
 Currently unavailable.
