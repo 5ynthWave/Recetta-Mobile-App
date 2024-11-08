@@ -8,7 +8,7 @@ const RecipeList = () => {
   return (
     <SafeAreaView>
       <Text style={styles.screenHeader}>
-        Hi, Viewer
+        Hello, User
       </Text>
       <Text style={{marginLeft: 10, fontSize: 15, fontWeight: '500'}}>
         Explore below to see featured recipes.
