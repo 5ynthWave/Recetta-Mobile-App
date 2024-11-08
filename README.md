@@ -15,10 +15,10 @@ Expo, React Native, Tamagui
 ## Installation
 Currently unavailable.
 
-## Authors and acknowledgment
+## Authors and acknowledgments
 Erik Zuniga (Author),
-Erdogan Dogdu (Acknowledgement),
 Jorge Zuniga (Acknowledgment)
+Erdogan Dogdu (Acknowledgement),
 
 ## References and support
 Please contact ezuniga7@angelo.edu or ezuni3468@outlook.com for support with the application.
