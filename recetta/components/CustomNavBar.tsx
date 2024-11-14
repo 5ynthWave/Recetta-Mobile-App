@@ -1,7 +1,7 @@
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {BottomTabBarProps} from '@react-navigation/bottom-tabs';
 import React from 'react';
-import { FontAwesome } from '@expo/vector-icons';
+import { Feather } from '@expo/vector-icons';
 
 const CustomNavBar: React.FC<BottomTabBarProps> = ({state, descriptors, navigation}) => {
   return (
@@ -34,13 +34,13 @@ const CustomNavBar: React.FC<BottomTabBarProps> = ({state, descriptors, navigati
           // Create a tab item for each route,
           // and add an icon for each tab, and
           // if the tab is focused (pressed), show its label
+          // {isFocused && <Text style={styles.tabText}>{label as string}</Text>}
           <TouchableOpacity
             key={route.key}
             onPress={onPress}
             style={[styles.tabItem, {backgroundColor: isFocused ? '#F2F2F2' : 'transparent'}]}
           >
             {getIconByRouteName(route.name, '#2B2B2B')}
-            {isFocused && <Text style={styles.tabText}>{label as string}</Text>}
           </TouchableOpacity>
         );
       })}
@@ -51,13 +51,13 @@ const CustomNavBar: React.FC<BottomTabBarProps> = ({state, descriptors, navigati
   function getIconByRouteName(routeName: string, color: string) {
     switch(routeName) {
       case 'RecipeListScreen':
-        return <FontAwesome name='star' size={35} color={color}/>;
+        return <Feather name='star' size={25} color={color}/>;
       case 'SearchListScreen':
-        return <FontAwesome name='search-plus' size={35} color={color}/>;
+        return <Feather name='search' size={25} color={color}/>;
       case 'SavedListScreen':
-        return <FontAwesome name='bookmark' size={35} color={color}/>;
+        return <Feather name='bookmark' size={25} color={color}/>;
       case 'SettingsScreen':
-        return <FontAwesome name='gear' size={35} color={color}/>;
+        return <Feather name='settings' size={25} color={color}/>;
     }
   }
 }
@@ -68,27 +68,32 @@ const styles = StyleSheet.create({
     position: 'absolute',
     flexDirection: 'row',
     backgroundColor: '#D1D0D0',
-    width: '85%',
+    width: '80%',
     alignSelf: 'center',
     bottom: 40,
-    borderRadius: 35,
-    paddingHorizontal: 40,
-    paddingVertical: 20,
+    borderRadius: 22.5,
+    paddingHorizontal: 30,
+    paddingVertical: 15,
     alignItems: 'center',
+
+    shadowColor: 'black',
+    shadowOffset: {width: 0, height: 2},
+    shadowOpacity: 0.25,
+    shadowRadius: 7.5
   },
   tabItem: {
     flexDirection: 'row',
-    height: 30,
+    height: 25,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: 15,
+    paddingHorizontal: 28.5,
     paddingVertical: 25,
-    borderRadius: 25
+    borderRadius: 20
   },
   tabText: {
     color: '#2B2B2B',
     fontWeight: 500,
-    marginLeft: 10,
-    fontSize: 25,
+    marginLeft: 5,
+    fontSize: 20
   }
 })

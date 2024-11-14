@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { NavigationProp } from '@react-navigation/native';
 import { router } from 'expo-router';
-import { FontAwesome } from '@expo/vector-icons';
+import { Feather } from '@expo/vector-icons';
 
 const index = ({navigation}: {navigation: NavigationProp<any>}) => {
   return(
@@ -18,9 +18,9 @@ const index = ({navigation}: {navigation: NavigationProp<any>}) => {
       </Text>
       <TouchableOpacity onPress={() => router.push("/RecipeListScreen")}
         style={styles.welcomeButton}>
-        <Text style={{fontSize: 20}}>
+        <Text style={{fontSize: 20.5, justifyContent: 'center'}}>
           Get Started &nbsp;
-          <FontAwesome name="arrow-right" size={20} color="black"/>
+          <Feather name="arrow-up-right" size={20.5} color="black"/>
         </Text>
       </TouchableOpacity>
     </View>
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
 
     shadowColor: 'black',
     shadowOffset: {width: 0, height: 2},
-    shadowOpacity: 0.1,
-    shadowRadius: 4
+    shadowOpacity: 0.25,
+    shadowRadius: 7.5
   }
 });
