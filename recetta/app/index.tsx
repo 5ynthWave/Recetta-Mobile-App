@@ -30,10 +30,10 @@ const index = ({navigation}: {navigation: NavigationProp<any>}) => {
 export default index;
 const styles = StyleSheet.create({
   welcomeImage: {
-    width: 500, 
+    width: '100%', 
     height: 500, 
-    borderBottomLeftRadius: 30,
-    borderBottomRightRadius: 30,
+    borderBottomLeftRadius: 20,
+    borderBottomRightRadius: 20
   },
   welcomeButton: {
     backgroundColor: 'lightgray', 

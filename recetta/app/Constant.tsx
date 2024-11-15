@@ -1,9 +1,9 @@
 // Constants for Featured Screen Categories
 export const colors = {
-  COLOR_PRIMARY: "lightgray",
-  COLOR_LIGHT: "white",
+  COLOR_PRIMARY: "#AFAFAF",
+  COLOR_LIGHT: "#F3C86A",
   COLOR_DARK: "black",
-  COLOR_DARK_ALT: "orange"
+  COLOR_DARK_ALT: "black"
 }
 
 export const categories = [
