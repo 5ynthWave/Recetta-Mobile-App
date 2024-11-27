@@ -6,7 +6,7 @@ import { categories, colors } from '@/app/Constant';
 const CategoriesFilter = () => {
   return (
     <View>
-      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+      <ScrollView horizontal showsHorizontalScrollIndicator={true}>
         {categories.map((category, index) => {
           return (
             <View style={{
@@ -15,7 +15,7 @@ const CategoriesFilter = () => {
               width: 125, 
               marginHorizontal: 20,
               marginTop: 5,
-              marginBottom: 30,
+              marginBottom: 15,
               borderRadius: 5,
               paddingHorizontal: 20,
               paddingVertical: 20,

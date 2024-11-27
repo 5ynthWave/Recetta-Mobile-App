@@ -25,7 +25,6 @@ const RecipeList = () => {
           &nbsp;
         </Text>
       </View>
-      {/*<View style={styles.horizontalLine}/>*/}
       <Text style={{fontSize: 23.5, fontWeight: '700', marginHorizontal: 35,
         marginVertical: 25}}>
         <Feather name='menu' size={25} color='black'/>&nbsp; Categories
@@ -57,7 +56,8 @@ const styles = StyleSheet.create({
     fontSize: 23.5,
     fontWeight: '700',
     marginHorizontal: 35,
-    marginBottom: 25
+    marginBottom: 25,
+    marginTop: 10
   },
   horizontalLine: {
     height: 2,
