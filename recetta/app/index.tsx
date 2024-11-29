@@ -1,6 +1,5 @@
 import { Image, Text, View, StyleSheet, Platform, useColorScheme } from 'react-native';
-import React, {useState} from 'react';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { TouchableOpacity } from 'react-native';
 import { NavigationProp } from '@react-navigation/native';
 import { router } from 'expo-router';
 import { Feather } from '@expo/vector-icons';

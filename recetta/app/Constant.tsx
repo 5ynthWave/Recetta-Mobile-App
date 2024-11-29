@@ -18,3 +18,7 @@ export const categories = [
   {id: "09", category: "Dessert"},
 ]
 //
+
+export const categoryData = [
+  
+]

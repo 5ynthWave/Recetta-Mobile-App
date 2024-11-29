@@ -52,8 +52,6 @@ const CustomNavBar: React.FC<BottomTabBarProps> = ({state, descriptors, navigati
     switch(routeName) {
       case 'RecipeListScreen':
         return <Feather name='star' size={25} color={color}/>;
-      case 'SearchListScreen':
-        return <Feather name='search' size={25} color={color}/>;
       case 'SavedListScreen':
         return <Feather name='bookmark' size={25} color={color}/>;
       case 'SettingsScreen':
@@ -76,7 +74,7 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     alignItems: 'center',
 
-    shadowColor: 'black',
+    shadowColor: 'lightgray',
     shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.25,
     shadowRadius: 7.5
@@ -86,7 +84,7 @@ const styles = StyleSheet.create({
     height: 25,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: 28.5,
+    paddingHorizontal: '13%',
     paddingVertical: 25,
     borderRadius: 20
   },

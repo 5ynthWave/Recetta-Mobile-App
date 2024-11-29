@@ -1,18 +1,63 @@
-import {StyleSheet, View, Text, Image} from 'react-native';
+import {StyleSheet, View, Text, Image, Button, GestureResponderEvent} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import { Feather } from '@expo/vector-icons';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { SearchBar } from 'react-native-screens';
-import CategoriesFilter from '@/components/CategoriesFilter';
+import Categories from '@/components/Categories';
+import axios from 'axios';
+import { TextInput } from 'react-native-gesture-handler';
+
+// const baseUrl = "https://pokeapi.co/api/v2/";
 
 const RecipeList = () => {
-  {/*Fetching APIS*/}
-  {/*Fetching APIS*/}
+  // useState -> the primary way of storing variables in a React ecosystem
+  // do not use conventional TypeScript, use React ecosystem when working with
+  // variables or functions
+
+  const [activeCategory, setActiveCategory] = useState('Beef');
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    getCategories();
+  },[]);
+
+  const getCategories = async () => {
+    try {
+      // Fetch the API
+      const response = await axios.get('https://themealdb.com/api/json/v1/1/categories.php');
+      // Check that the response is valid
+      if(response && response.data) {
+        setCategories(response.data.categories);
+      }
+    } catch(err: any) {
+      console.error('An error has occurred: ', err.message);
+    }
+  }
+  /*
+  async function foo () {
+    try {
+      // Fetch the API
+      const res = await fetch(baseUrl + "ability/tablets-of-ruin", {method: "GET"});
+      // Check that the response is valid
+      if(!res.ok)
+        throw new Error(`Response status: ${res.status}`);
+      // If so, then grab the JSON text:
+      // The JSON object is based on the API's documentation for this specific API endpoint
+      const json = await res.json();
+      console.log(json);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  */
 
   return (
     <SafeAreaView>
-      <View style={{backgroundColor: '#2B2B2B', borderRadius:15, shadowColor: 'black',
-        shadowOffset: {width: 0, height: 2}, shadowOpacity: 0.4, shadowRadius: 10
+      <View style={{backgroundColor: '#2B2B2B',
+        borderRadius:15,
+        shadowColor: 'black',
+        shadowOffset: {width: 0, height: 2},
+        shadowOpacity: 0.4,
+        shadowRadius: 10
       }}>
         <Image source={require('@/assets/images/recipelistheader.jpeg')}
           style={styles.headerImage}/>
@@ -25,15 +70,38 @@ const RecipeList = () => {
           &nbsp;
         </Text>
       </View>
-      {/*<View style={styles.horizontalLine}/>*/}
+
+      {/* Search Bar */}
+      <View style={styles.searchBar}>
+        <TextInput style={{fontSize: 17.5, fontWeight: '500'}}
+          placeholder='Search for recipes'
+          placeholderTextColor={'#2B2B2B'}
+        />
+        <Feather style={{marginLeft: '35%'}}name='search' size={25} color='#2B2B2B'/>
+      </View>
+
+      {/* Categories Filters */}
       <Text style={{fontSize: 23.5, fontWeight: '700', marginHorizontal: 35,
         marginVertical: 25}}>
         <Feather name='menu' size={25} color='black'/>&nbsp; Categories
       </Text>
-      <CategoriesFilter/>
-      <Text style={styles.subHeader}>
-      <Feather name='menu' size={25} color='black'/>&nbsp; Recipes
-      </Text>
+      <Categories categories={categories} activeCategory={activeCategory} setActiveCategory={setActiveCategory}/>
+      
+      {/* Recipe List */}
+      <View style={{
+        height: '100%',
+        marginTop: 15,
+        backgroundColor: '#2B2B2B',
+        borderRadius: 15,
+        shadowColor: 'black',
+        shadowOffset: {width: 0, height: 2},
+        shadowOpacity: 0.4,
+        shadowRadius: 10
+      }}>
+        <Text style={styles.subHeader}>
+        <Feather name='menu' size={25} color='white'/>&nbsp; Recipes
+        </Text>
+      </View>
     </SafeAreaView>
   );
 }
@@ -53,11 +121,26 @@ const styles = StyleSheet.create({
     marginBottom: 25,
     color: 'white'
   },
+  searchBar: {
+    flexDirection: 'row',
+    backgroundColor: '#D1D0D0',
+    marginTop: 25,
+    marginHorizontal: '12.5%',
+    padding: 20,
+    width: '75%',
+    borderRadius: 15,
+    shadowColor: 'black',
+    shadowOffset: {width: 0, height: 2},
+    shadowOpacity: 0.2,
+    shadowRadius: 6
+  },
   subHeader: {
     fontSize: 23.5,
     fontWeight: '700',
     marginHorizontal: 35,
-    marginBottom: 25
+    marginBottom: 25,
+    marginTop: 25,
+    color: 'white'
   },
   horizontalLine: {
     height: 2,

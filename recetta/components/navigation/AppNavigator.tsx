@@ -5,7 +5,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 import index from '../../app/index';
 import RecipeListScreen from '../../app/RecipeListScreen';
 import SavedListScreen from '../../app/SavedListScreen';
-import SearchListScreen from '../../app/SearchListScreen';
 import SettingsListScreen from '@/app/SettingsScreen';
 
 const Stack = createStackNavigator();
@@ -17,7 +16,6 @@ const App = () => {
         <Stack.Screen name="index" component={index}/>
         <Stack.Screen name="RecipeListScreen" component={RecipeListScreen}/>
         <Stack.Screen name="SavedListScreen" component={SavedListScreen}/>
-        <Stack.Screen name="SearchListScreen" component={SearchListScreen}/>
         <Stack.Screen name="SettingsListScreen" component={SettingsListScreen}/>
       </Stack.Navigator>
     </NavigationContainer>
