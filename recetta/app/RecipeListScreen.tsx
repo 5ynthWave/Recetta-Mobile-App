@@ -1,10 +1,10 @@
-import {StyleSheet, View, Text, Image, Button, GestureResponderEvent} from 'react-native';
+import {StyleSheet, TextInput, View, Text, Image, Button, GestureResponderEvent} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import { Feather } from '@expo/vector-icons';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Categories from '@/components/Categories';
+import Recipes from '@/components/Recipes';
 import axios from 'axios';
-import { TextInput } from 'react-native-gesture-handler';
 
 // const baseUrl = "https://pokeapi.co/api/v2/";
 
@@ -15,23 +15,43 @@ const RecipeList = () => {
 
   const [activeCategory, setActiveCategory] = useState('Beef');
   const [categories, setCategories] = useState([]);
+  const [meals, setMeals] = useState([]);
 
+  // Call the getCategories and getRecipes functions when the component mounts
   useEffect(() => {
     getCategories();
+    getRecipes();
   },[]);
 
+  // Get the categories from the API
   const getCategories = async () => {
     try {
       // Fetch the API
       const response = await axios.get('https://themealdb.com/api/json/v1/1/categories.php');
       // Check that the response is valid
       if(response && response.data) {
-        setCategories(response.data.categories);
+        setCategories(response.data.meals);
       }
     } catch(err: any) {
       console.error('An error has occurred: ', err.message);
     }
   }
+
+  // Get the recipes from the API
+  const getRecipes = async (category="Beef") => {
+    try {
+      // Fetch the API
+      const response = await axios.get(`https://themealdb.com/api/json/v1/1/filter.php?c=${category}`);
+      console.log('Got recipes: ', response.data);
+      // Check that the response is valid
+      if(response && response.data) {
+        setMeals(response.data.meals);
+      }
+    } catch(err: any) {
+      console.error('An error has occurred: ', err.message);
+    }
+  }
+
   /*
   async function foo () {
     try {
@@ -57,7 +77,8 @@ const RecipeList = () => {
         shadowColor: 'black',
         shadowOffset: {width: 0, height: 2},
         shadowOpacity: 0.4,
-        shadowRadius: 10
+        shadowRadius: 10,
+        elevation: 5
       }}>
         <Image source={require('@/assets/images/recipelistheader.jpeg')}
           style={styles.headerImage}/>
@@ -75,7 +96,7 @@ const RecipeList = () => {
       <View style={styles.searchBar}>
         <TextInput style={{fontSize: 17.5, fontWeight: '500'}}
           placeholder='Search for recipes'
-          placeholderTextColor={'#2B2B2B'}
+          placeholderTextColor={'gray'}
         />
         <Feather style={{marginLeft: '35%'}}name='search' size={25} color='#2B2B2B'/>
       </View>
@@ -96,11 +117,15 @@ const RecipeList = () => {
         shadowColor: 'black',
         shadowOffset: {width: 0, height: 2},
         shadowOpacity: 0.4,
-        shadowRadius: 10
+        shadowRadius: 10,
+        elevation: 5
       }}>
         <Text style={styles.subHeader}>
         <Feather name='menu' size={25} color='white'/>&nbsp; Recipes
         </Text>
+        {/* Output individual from that category of recipes */}
+        <Recipes meals={meals} categories={categories}/>
+
       </View>
     </SafeAreaView>
   );
@@ -132,7 +157,8 @@ const styles = StyleSheet.create({
     shadowColor: 'black',
     shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.2,
-    shadowRadius: 6
+    shadowRadius: 6,
+    elevation: 5
   },
   subHeader: {
     fontSize: 23.5,

@@ -32,7 +32,8 @@ const styles = StyleSheet.create({
     width: '100%', 
     height: 500, 
     borderBottomLeftRadius: 20,
-    borderBottomRightRadius: 20
+    borderBottomRightRadius: 20,
+    elevation: 5
   },
   welcomeButton: {
     backgroundColor: 'lightgray', 
@@ -45,6 +46,7 @@ const styles = StyleSheet.create({
     shadowColor: 'black',
     shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.25,
-    shadowRadius: 7.5
+    shadowRadius: 7.5,
+    elevation: 5
   }
 });

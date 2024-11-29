@@ -77,14 +77,15 @@ const styles = StyleSheet.create({
     shadowColor: 'lightgray',
     shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.25,
-    shadowRadius: 7.5
+    shadowRadius: 7.5,
+    elevation: 2
   },
   tabItem: {
     flexDirection: 'row',
     height: 25,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: '13%',
+    paddingHorizontal: '12%',
     paddingVertical: 25,
     borderRadius: 20
   },

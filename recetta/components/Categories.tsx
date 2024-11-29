@@ -1,6 +1,7 @@
-import {StyleSheet, TouchableOpacity, ScrollView, Text, View, Image} from 'react-native';
+import {StyleSheet, TouchableOpacity, ScrollView, Text, View, Image, Pressable} from 'react-native';
 import React from 'react';
 
+// List the categories given by the 'TheMealDB' API
 export default function Categories({categories, activeCategory, setActiveCategory}) {
   return (
     <View>
@@ -10,13 +11,15 @@ export default function Categories({categories, activeCategory, setActiveCategor
           categories.map((cat: any, index: any) => {
             let isActive = cat.strCategory == activeCategory;
 
+            // Output the cards/containers for the individual categories as touchable opacities
             return (
-              <TouchableOpacity 
+              <TouchableOpacity
                 key={index} 
                 onPress={()=> setActiveCategory(cat.name)}
                 style={styles.categoryContainer}
               >
                 <View>
+                  {/* Display the category image and title */}
                   <Image
                     source={{uri: cat.strCategoryThumb}}
                     style={styles.categoryImage}
@@ -43,7 +46,8 @@ const styles = StyleSheet.create({
     shadowColor: 'black',
     shadowOffset: {width: 0, height: 0},
     shadowOpacity: 0.2,
-    shadowRadius: 6
+    shadowRadius: 6,
+    elevation: 5
   },
   categoryImage: {
     width: 100,
