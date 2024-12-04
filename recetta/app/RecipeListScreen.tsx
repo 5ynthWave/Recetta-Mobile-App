@@ -1,11 +1,10 @@
-import {StyleSheet, TextInput, View, Text, Image, Button, GestureResponderEvent} from 'react-native';
-import React, {useEffect, useState} from 'react';
-import { Feather } from '@expo/vector-icons';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import Categories from '@/components/Categories';
-import Recipes from '@/components/Recipes';
-import axios from 'axios';
-import { ScrollView } from 'react-native-gesture-handler';
+import { StyleSheet, TextInput, View, Text, Image } from "react-native";
+import React, { useEffect, useState } from "react";
+import { Feather } from "@expo/vector-icons";
+import Categories from "@/components/Categories";
+import Recipes from "@/components/Recipes";
+import axios from "axios";
+import { ScrollView } from "react-native-gesture-handler";
 
 // const baseUrl = "https://pokeapi.co/api/v2/";
 
@@ -14,7 +13,7 @@ const RecipeList = () => {
   // do not use conventional TypeScript, use React ecosystem when working with
   // variables or functions
 
-  const [activeCategory, setActiveCategory] = useState('Beef');
+  const [activeCategory, setActiveCategory] = useState("Beef");
   const [categories, setCategories] = useState([]);
   const [meals, setMeals] = useState([]);
 
@@ -22,37 +21,41 @@ const RecipeList = () => {
   useEffect(() => {
     getCategories();
     getRecipes();
-  },[]);
+  }, []);
 
   // Get the categories from the API
   const getCategories = async () => {
     try {
       // Fetch the API
-      const response = await axios.get('https://themealdb.com/api/json/v1/1/categories.php');
-      console.log('Got categories: ', response.data);
+      const response = await axios.get(
+        "https://themealdb.com/api/json/v1/1/categories.php"
+      );
+      console.log("Got categories: ", response.data);
       // Check that the response is valid
-      if(response && response.data) {
+      if (response && response.data) {
         setCategories(response.data.categories);
       }
-    } catch(err: any) {
-      console.error('An error has occurred: ', err.message);
+    } catch (err: any) {
+      console.error("An error has occurred: ", err.message);
     }
-  }
+  };
 
   // Get the recipes from the API
-  const getRecipes = async (category="Beef") => {
+  const getRecipes = async (category = "Beef") => {
     try {
       // Fetch the API
-      const response = await axios.get(`https://themealdb.com/api/json/v1/1/filter.php?c=${category}`);
-      console.log('Got recipes: ', response.data);
+      const response = await axios.get(
+        `https://themealdb.com/api/json/v1/1/filter.php?c=${category}`
+      );
+      console.log("Got recipes: ", response.data);
       // Check that the response is valid
-      if(response && response.data) {
+      if (response && response.data) {
         setMeals(response.data.meals);
       }
-    } catch(err: any) {
-      console.error('An error has occurred: ', err.message);
+    } catch (err: any) {
+      console.error("An error has occurred: ", err.message);
     }
-  }
+  };
 
   /*
   async function foo () {
@@ -74,112 +77,149 @@ const RecipeList = () => {
 
   return (
     <ScrollView>
-      <View style={{backgroundColor: '#2B2B2B',
-        borderRadius:15,
-        shadowColor: 'black',
-        shadowOffset: {width: 0, height: 2},
-        shadowOpacity: 0.4,
-        shadowRadius: 10,
-        elevation: 5
-      }}>
-        <Image source={require('@/assets/images/recipelistheader.jpeg')}
-          style={styles.headerImage}/>
-        <Text style={{marginHorizontal: 35, marginTop: 25, marginBottom: 15, fontSize: 20,
-          fontWeight: '400', color: 'white'}}>
-          <Feather name='user' size={25} color='#F3C86A'/>&nbsp; Hello, User
+      <View
+        style={{
+          backgroundColor: "#2B2B2B",
+          borderRadius: 15,
+          shadowColor: "black",
+          shadowOffset: { width: 0, height: 2 },
+          shadowOpacity: 0.4,
+          shadowRadius: 10,
+          elevation: 5,
+        }}
+      >
+        <Image
+          source={require("@/assets/images/recipelistheader.jpeg")}
+          style={styles.headerImage}
+        />
+        <Text
+          style={{
+            marginHorizontal: 35,
+            marginTop: 25,
+            marginBottom: 15,
+            fontSize: 20,
+            fontWeight: "400",
+            color: "white",
+          }}
+        >
+          <Feather name="user" size={25} color="#F3C86A" />
+          &nbsp; Hello, User
         </Text>
         <Text style={styles.header}>
-          Explore featured recipes below.
-          &nbsp;
+          Explore featured recipes below. &nbsp;
         </Text>
       </View>
 
       {/* Search Bar */}
       <View style={styles.searchBar}>
-        <TextInput style={{fontSize: 17.5, fontWeight: '500'}}
-          placeholder='Search for recipes'
-          placeholderTextColor={'gray'}
+        <TextInput
+          style={{ fontSize: 17.5, fontWeight: "500" }}
+          placeholder="Search for recipes"
+          placeholderTextColor={"gray"}
         />
-        <Feather style={{marginLeft: '35%'}}name='search' size={25} color='#2B2B2B'/>
+        <Feather
+          style={{ marginLeft: "35%" }}
+          name="search"
+          size={25}
+          color="#2B2B2B"
+        />
       </View>
 
       {/* Categories Filters */}
-      <Text style={{fontSize: 23.5, fontWeight: '700', marginHorizontal: 35,
-        marginVertical: 25}}>
-        <Feather name='menu' size={25} color='black'/>&nbsp; Categories
+      <Text
+        style={{
+          fontSize: 23.5,
+          fontWeight: "700",
+          marginHorizontal: 35,
+          marginVertical: 25,
+        }}
+      >
+        <Feather name="menu" size={25} color="black" />
+        &nbsp; Categories
       </Text>
       {
         // Check if the categories are not empty
-        categories && <Categories categories={categories} activeCategory={activeCategory} setActiveCategory={setActiveCategory}/>
+        categories && (
+          <Categories
+            categories={categories}
+            activeCategory={activeCategory}
+            setActiveCategory={setActiveCategory}
+          />
+        )
       }
-      
+
       {/* Recipe List */}
-      <View style={{
-        height: '100%',
-        marginTop: 15,
-        backgroundColor: '#2B2B2B',
-        borderRadius: 15,
-        shadowColor: 'black',
-        shadowOffset: {width: 0, height: 2},
-        shadowOpacity: 0.4,
-        shadowRadius: 10,
-        elevation: 5
-      }}>
+      <View
+        style={{
+          height: "100%",
+          marginTop: 15,
+          backgroundColor: "#2B2B2B",
+          borderRadius: 15,
+          shadowColor: "black",
+          shadowOffset: { width: 0, height: 2 },
+          shadowOpacity: 0.4,
+          shadowRadius: 10,
+          elevation: 5,
+        }}
+      >
         <Text style={styles.subHeader}>
-        <Feather name='menu' size={25} color='white'/>&nbsp; Recipes
+          <Feather name="menu" size={25} color="white" />
+          &nbsp; Recipes
         </Text>
         {/* Output individual from that category of recipes */}
         {
           // Check if the categories and meals are not empty
-          categories && meals && <Recipes meals={meals} categories={categories}/>
+          categories && meals && (
+            <Recipes meals={meals} categories={categories} />
+          )
         }
       </View>
     </ScrollView>
   );
-}
+};
 
 export default RecipeList;
 const styles = StyleSheet.create({
   headerImage: {
-    width: '100%',
+    width: "100%",
     height: 300,
     borderBottomLeftRadius: 15,
     borderBottomRightRadius: 15,
   },
   header: {
     fontSize: 23.5,
-    fontWeight: '700',
+    fontWeight: "700",
     marginHorizontal: 35,
     marginBottom: 25,
-    color: 'white'
+    color: "white",
   },
   searchBar: {
-    flexDirection: 'row',
-    backgroundColor: '#D1D0D0',
+    flexDirection: "row",
+    backgroundColor: "#D1D0D0",
     marginTop: 25,
-    marginHorizontal: '12.5%',
+    marginHorizontal: "12.5%",
     padding: 20,
-    width: '75%',
+    width: "75%",
     borderRadius: 15,
-    shadowColor: 'black',
-    shadowOffset: {width: 0, height: 2},
+    shadowColor: "black",
+    shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
     shadowRadius: 6,
-    elevation: 5
+    elevation: 5,
   },
   subHeader: {
     fontSize: 23.5,
-    fontWeight: '700',
+    fontWeight: "700",
     marginHorizontal: 35,
     marginBottom: 25,
     marginTop: 25,
-    color: 'white'
+    color: "white",
   },
   horizontalLine: {
     height: 2,
-    backgroundColor: 'black',
+    backgroundColor: "black",
     marginHorizontal: 75,
     marginTop: 0,
-    marginBottom: 10
-  }
+    marginBottom: 10,
+  },
 });

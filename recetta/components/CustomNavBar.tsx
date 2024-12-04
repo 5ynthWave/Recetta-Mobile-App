@@ -1,26 +1,31 @@
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
-import {BottomTabBarProps} from '@react-navigation/bottom-tabs';
-import React from 'react';
-import { Feather } from '@expo/vector-icons';
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
+import React from "react";
+import { Feather } from "@expo/vector-icons";
 
-const CustomNavBar: React.FC<BottomTabBarProps> = ({state, descriptors, navigation}) => {
+const CustomNavBar: React.FC<BottomTabBarProps> = ({
+  state,
+  descriptors,
+  navigation,
+}) => {
   return (
     <View style={styles.container}>
       {state.routes.map((route, index) => {
-        if(['index', '_sitemap', '+not-found'].includes(route.name)) return null;
+        if (["index", "_sitemap", "+not-found"].includes(route.name))
+          return null;
         const { options } = descriptors[route.key];
         const label =
           options.tabBarLabel !== undefined
             ? options.tabBarLabel
             : options.title !== undefined
-              ? options.title
-              : route.name;
+            ? options.title
+            : route.name;
 
         const isFocused = state.index === index;
 
         const onPress = () => {
           const event = navigation.emit({
-            type: 'tabPress',
+            type: "tabPress",
             target: route.key,
             canPreventDefault: true,
           });
@@ -38,9 +43,12 @@ const CustomNavBar: React.FC<BottomTabBarProps> = ({state, descriptors, navigati
           <TouchableOpacity
             key={route.key}
             onPress={onPress}
-            style={[styles.tabItem, {backgroundColor: isFocused ? '#F2F2F2' : 'transparent'}]}
+            style={[
+              styles.tabItem,
+              { backgroundColor: isFocused ? "#F2F2F2" : "transparent" },
+            ]}
           >
-            {getIconByRouteName(route.name, '#2B2B2B')}
+            {getIconByRouteName(route.name, "#2B2B2B")}
           </TouchableOpacity>
         );
       })}
@@ -49,50 +57,50 @@ const CustomNavBar: React.FC<BottomTabBarProps> = ({state, descriptors, navigati
 
   // Set individual icons for each tab
   function getIconByRouteName(routeName: string, color: string) {
-    switch(routeName) {
-      case 'RecipeListScreen':
-        return <Feather name='star' size={25} color={color}/>;
-      case 'SavedListScreen':
-        return <Feather name='bookmark' size={25} color={color}/>;
-      case 'SettingsScreen':
-        return <Feather name='settings' size={25} color={color}/>;
+    switch (routeName) {
+      case "RecipeListScreen":
+        return <Feather name="star" size={25} color={color} />;
+      case "SavedListScreen":
+        return <Feather name="bookmark" size={25} color={color} />;
+      case "SettingsScreen":
+        return <Feather name="settings" size={25} color={color} />;
     }
   }
-}
+};
 
 export default CustomNavBar;
 const styles = StyleSheet.create({
   container: {
-    position: 'absolute',
-    flexDirection: 'row',
-    backgroundColor: '#D1D0D0',
-    width: '80%',
-    alignSelf: 'center',
+    position: "absolute",
+    flexDirection: "row",
+    backgroundColor: "#D1D0D0",
+    width: "80%",
+    alignSelf: "center",
     bottom: 40,
     borderRadius: 22.5,
     paddingHorizontal: 30,
     paddingVertical: 15,
-    alignItems: 'center',
+    alignItems: "center",
 
-    shadowColor: 'lightgray',
-    shadowOffset: {width: 0, height: 2},
+    shadowColor: "lightgray",
+    shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.25,
     shadowRadius: 7.5,
-    elevation: 2
+    elevation: 2,
   },
   tabItem: {
-    flexDirection: 'row',
+    flexDirection: "row",
     height: 25,
-    alignItems: 'center',
-    justifyContent: 'center',
-    paddingHorizontal: '12%',
+    alignItems: "center",
+    justifyContent: "center",
+    paddingHorizontal: "12.75%",
     paddingVertical: 25,
-    borderRadius: 20
+    borderRadius: 20,
   },
   tabText: {
-    color: '#2B2B2B',
+    color: "#2B2B2B",
     fontWeight: 500,
     marginLeft: 5,
-    fontSize: 20
-  }
-})
+    fontSize: 20,
+  },
+});
