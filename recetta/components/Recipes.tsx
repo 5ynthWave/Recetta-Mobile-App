@@ -2,7 +2,6 @@ import { StyleSheet, Image, View, Text, Pressable } from "react-native";
 import React from "react";
 import MasonryList from "@react-native-seoul/masonry-list";
 import { Feather } from "@expo/vector-icons";
-import { FontAwesome } from "@expo/vector-icons";
 
 export default function Recipes({
   meals,
@@ -34,7 +33,7 @@ const RecipeCard = ({ item, index }: { item: any; index: any }) => {
         <Image source={{ uri: item.strMealThumb }} style={styles.recipeImage} />
         <Text style={styles.recipeTitle}>
           {item.strMeal.length >= 20
-            ? item.strMeal.slice(0, 20) + "..."
+            ? item.strMeal.slice(0, 17) + "..."
             : item.strMeal}
           &nbsp;
           <Feather name="arrow-up-right" size={20} color="black" />

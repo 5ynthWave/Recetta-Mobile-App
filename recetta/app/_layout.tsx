@@ -8,7 +8,6 @@ export default function Layout() {
       <Tabs.Screen name="index" options={{headerShown: false}}/>
       <Tabs.Screen name="RecipeListScreen" options={{headerShown: false}}/>
       <Tabs.Screen name="SavedListScreen" options={{headerShown: false}}/>
-      <Tabs.Screen name="SearchListScreen" options={{headerShown: false}}/>
       <Tabs.Screen name="SettingsScreen" options={{headerShown: false}}/>
     </Tabs>
   );

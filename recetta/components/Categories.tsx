@@ -12,13 +12,12 @@ import React from "react";
 export default function Categories({
   categories,
   activeCategory,
-  setActiveCategory,
+  handleChangeCategory,
 }: {
   categories: any;
   activeCategory: any;
-  setActiveCategory: any;
+  handleChangeCategory: any;
 }) {
-  // console.log("-+- Categories: ", categories);
   return (
     <View>
       <ScrollView
@@ -33,7 +32,7 @@ export default function Categories({
           return (
             <TouchableOpacity
               key={index}
-              onPress={() => setActiveCategory(cat.name)}
+              onPress={() => handleChangeCategory(cat.name)}
               style={styles.categoryContainer}
             >
               <View>

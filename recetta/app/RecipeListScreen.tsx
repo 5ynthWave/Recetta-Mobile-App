@@ -23,6 +23,13 @@ const RecipeList = () => {
     getRecipes();
   }, []);
 
+  const handleChangeCategory = (category = "Pasta") => {
+    console.log("Category: ", category);
+    getRecipes(category);
+    setActiveCategory(category);
+    setMeals([]);
+  }
+
   // Get the categories from the API
   const getCategories = async () => {
     try {
@@ -112,16 +119,11 @@ const RecipeList = () => {
 
       {/* Search Bar */}
       <View style={styles.searchBar}>
+        <Feather name="search" size={25} color="black" styles={{ marginRight: 15}}/>
         <TextInput
           style={{ fontSize: 17.5, fontWeight: "500" }}
           placeholder="Search for recipes"
           placeholderTextColor={"gray"}
-        />
-        <Feather
-          style={{ marginLeft: "35%" }}
-          name="search"
-          size={25}
-          color="#2B2B2B"
         />
       </View>
 
@@ -134,7 +136,7 @@ const RecipeList = () => {
           marginVertical: 25,
         }}
       >
-        <Feather name="menu" size={25} color="black" />
+        <Feather name="menu" size={25} color="black"/>
         &nbsp; Categories
       </Text>
       {
@@ -143,7 +145,7 @@ const RecipeList = () => {
           <Categories
             categories={categories}
             activeCategory={activeCategory}
-            setActiveCategory={setActiveCategory}
+            handleChangeCategory={handleChangeCategory}
           />
         )
       }
@@ -197,7 +199,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     backgroundColor: "#D1D0D0",
     marginTop: 25,
-    marginHorizontal: "12.5%",
+    marginLeft: "12.5%",
     padding: 20,
     width: "75%",
     borderRadius: 15,
