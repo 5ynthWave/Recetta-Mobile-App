@@ -5,6 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Categories from '@/components/Categories';
 import Recipes from '@/components/Recipes';
 import axios from 'axios';
+import { ScrollView } from 'react-native-gesture-handler';
 
 // const baseUrl = "https://pokeapi.co/api/v2/";
 
@@ -28,9 +29,10 @@ const RecipeList = () => {
     try {
       // Fetch the API
       const response = await axios.get('https://themealdb.com/api/json/v1/1/categories.php');
+      console.log('Got categories: ', response.data);
       // Check that the response is valid
       if(response && response.data) {
-        setCategories(response.data.meals);
+        setCategories(response.data.categories);
       }
     } catch(err: any) {
       console.error('An error has occurred: ', err.message);
@@ -71,7 +73,7 @@ const RecipeList = () => {
   */
 
   return (
-    <SafeAreaView>
+    <ScrollView>
       <View style={{backgroundColor: '#2B2B2B',
         borderRadius:15,
         shadowColor: 'black',
@@ -106,7 +108,10 @@ const RecipeList = () => {
         marginVertical: 25}}>
         <Feather name='menu' size={25} color='black'/>&nbsp; Categories
       </Text>
-      <Categories categories={categories} activeCategory={activeCategory} setActiveCategory={setActiveCategory}/>
+      {
+        // Check if the categories are not empty
+        categories && <Categories categories={categories} activeCategory={activeCategory} setActiveCategory={setActiveCategory}/>
+      }
       
       {/* Recipe List */}
       <View style={{
@@ -124,10 +129,12 @@ const RecipeList = () => {
         <Feather name='menu' size={25} color='white'/>&nbsp; Recipes
         </Text>
         {/* Output individual from that category of recipes */}
-        <Recipes meals={meals} categories={categories}/>
-
+        {
+          // Check if the categories and meals are not empty
+          categories && meals && <Recipes meals={meals} categories={categories}/>
+        }
       </View>
-    </SafeAreaView>
+    </ScrollView>
   );
 }
 

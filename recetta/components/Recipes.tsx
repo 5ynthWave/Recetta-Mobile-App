@@ -2,7 +2,7 @@ import {StyleSheet, Image, View, Text, Pressable} from 'react-native';
 import React from 'react';
 import MasonryList from '@react-native-seoul/masonry-list';
 
-export default function Recipes({meals, categories}) {
+export default function Recipes({meals, categories}:{meals: any, categories: any}) {
   return (
     <View>
       {
@@ -31,7 +31,7 @@ const RecipeCard = ({item, index}) => {
         />
         <Text style={{fontSize: 17.5, fontWeight: '500', marginHorizontal: 15, marginTop: 10}}>
           {
-            item.strMeal.length >= 20 ? item.strMeal.substring(0, 20) + '...' : item.strMeal
+            item.strMeal.length >= 20 ? item.strMeal.slice(0, 20) + '...' : item.strMeal
           }
         </Text>
       </Pressable>
