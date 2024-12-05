@@ -11,7 +11,11 @@ export default function RecipeDetailScreen() {
   return (
     <ScrollView style={{}}>
       <StatusBar style="auto" />
-      <Text>blah blah</Text>
+      <View style={styles.header}></View>
     </ScrollView>
   );
 }
+
+const styles = StyleSheet.create({
+  header: {},
+});

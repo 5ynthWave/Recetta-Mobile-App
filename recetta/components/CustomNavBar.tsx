@@ -2,6 +2,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
 import React from "react";
 import { Feather } from "@expo/vector-icons";
+import { router } from "expo-router";
 
 const CustomNavBar: React.FC<BottomTabBarProps> = ({
   state,
@@ -37,6 +38,13 @@ const CustomNavBar: React.FC<BottomTabBarProps> = ({
 
           if (!isFocused && !event.defaultPrevented) {
             navigation.navigate(route.name, route.params);
+          }
+          // Check to see if the user want to return to
+          // home (RecipeList) screen;
+          // router.push will force to a direct screen,
+          // in this case home/home
+          else if (route.name == "home") {
+            router.push("/home/home");
           }
         };
 
