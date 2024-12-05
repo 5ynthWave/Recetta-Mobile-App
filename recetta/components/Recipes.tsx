@@ -30,7 +30,9 @@ export default function Recipes({
 const RecipeCard = ({ item, index }: { item: any; index: any }) => {
   return (
     <View>
-      <Link href={{ pathname: "/RecipeDetailScreen", params: { ...item } }}>
+      <Link
+        href={{ pathname: "/home/RecipeDetailScreen", params: { ...item } }}
+      >
         <Pressable style={styles.recipeCard}>
           <Image
             source={{ uri: item.strMealThumb }}

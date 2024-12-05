@@ -8,10 +8,15 @@ const CustomNavBar: React.FC<BottomTabBarProps> = ({
   descriptors,
   navigation,
 }) => {
+  console.log(state.routeNames);
   return (
     <View style={styles.container}>
       {state.routes.map((route, index) => {
-        if (["index", "_sitemap", "+not-found"].includes(route.name))
+        if (
+          ["index", "RecipeDetailScreen", "_sitemap", "+not-found"].includes(
+            route.name
+          )
+        )
           return null;
         const { options } = descriptors[route.key];
         const label =
@@ -58,7 +63,7 @@ const CustomNavBar: React.FC<BottomTabBarProps> = ({
   // Set individual icons for each tab
   function getIconByRouteName(routeName: string, color: string) {
     switch (routeName) {
-      case "RecipeListScreen":
+      case "home":
         return <Feather name="star" size={25} color={color} />;
       case "SavedListScreen":
         return <Feather name="bookmark" size={25} color={color} />;

@@ -6,9 +6,10 @@ export default function Layout() {
   return (
     <Tabs tabBar={(props) => <CustomNavBar {...props} />}>
       <Tabs.Screen name="index" options={{ headerShown: false }} />
-      <Tabs.Screen name="RecipeListScreen" options={{ headerShown: false }} />
+      <Tabs.Screen name="home" options={{ headerShown: false }} />
       <Tabs.Screen name="SavedListScreen" options={{ headerShown: false }} />
       <Tabs.Screen name="SettingsScreen" options={{ headerShown: false }} />
+      <Tabs.Screen name="RecipeDetailScreen" options={{ headerShown: false }} />
     </Tabs>
   );
 }
