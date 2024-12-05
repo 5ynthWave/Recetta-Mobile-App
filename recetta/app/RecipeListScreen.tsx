@@ -23,12 +23,12 @@ const RecipeList = () => {
     getRecipes();
   }, []);
 
-  const handleChangeCategory = (category = "Pasta") => {
+  const handleChangeCategory = (category: string) => {
     console.log("Category: ", category);
     getRecipes(category);
     setActiveCategory(category);
     setMeals([]);
-  }
+  };
 
   // Get the categories from the API
   const getCategories = async () => {
@@ -119,7 +119,12 @@ const RecipeList = () => {
 
       {/* Search Bar */}
       <View style={styles.searchBar}>
-        <Feather name="search" size={25} color="black" styles={{ marginRight: 15}}/>
+        <Feather
+          name="search"
+          size={25}
+          color="black"
+          styles={{ marginRight: 15 }}
+        />
         <TextInput
           style={{ fontSize: 17.5, fontWeight: "500" }}
           placeholder="Search for recipes"
@@ -136,7 +141,7 @@ const RecipeList = () => {
           marginVertical: 25,
         }}
       >
-        <Feather name="menu" size={25} color="black"/>
+        <Feather name="menu" size={25} color="black" />
         &nbsp; Categories
       </Text>
       {

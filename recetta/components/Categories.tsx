@@ -32,7 +32,7 @@ export default function Categories({
           return (
             <TouchableOpacity
               key={index}
-              onPress={() => handleChangeCategory(cat.name)}
+              onPress={() => handleChangeCategory(cat.strCategory)}
               style={styles.categoryContainer}
             >
               <View>
