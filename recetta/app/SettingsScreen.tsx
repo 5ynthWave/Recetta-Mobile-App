@@ -130,6 +130,7 @@ const styles = StyleSheet.create({
     shadowRadius: 4.65,
   },
   settingText: {
+    fontWeight: "500",
     fontSize: 21.5,
   },
 });
