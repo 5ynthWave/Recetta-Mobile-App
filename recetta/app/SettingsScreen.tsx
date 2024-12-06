@@ -1,23 +1,32 @@
 import React from "react";
-import { View, Text, Switch, StyleSheet, ScrollView, Pressable } from "react-native";
+import {
+  View,
+  Text,
+  Switch,
+  StyleSheet,
+  ScrollView,
+  Pressable,
+} from "react-native";
 import { Feather } from "@expo/vector-icons";
 
 const SettingsListScreen = () => {
   const [isEnabled, setIsEnabled] = React.useState(false);
-  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+  const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
 
-  {/* For the sake of saving time, a function for individual settings will
-      not be added, however it is recommended to add in the future*/}
+  {
+    /* For the sake of saving time, a function for individual settings will
+      not be added, however it is recommended to add in the future*/
+  }
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.header}>
-        <Feather name="settings" size={30} color={"#F3C86A"}/> &nbsp;
-        <Text style={{color: "white"}}>Settings</Text>
+        <Feather name="settings" size={30} color={"#F3C86A"} /> &nbsp;
+        <Text style={{ color: "white" }}>Settings</Text>
       </Text>
       <View style={styles.settingItem}>
         <Text style={styles.settingText}>
-          <Feather name="bell" size={22.5} color={"gray"}/>&nbsp;
-          Enable Notifications
+          <Feather name="bell" size={22.5} color={"gray"} />
+          &nbsp; Enable Notifications
         </Text>
         <Switch
           trackColor={{ false: "#767577", true: "#81b0ff" }}
@@ -29,8 +38,8 @@ const SettingsListScreen = () => {
       </View>
       <View style={styles.settingItem}>
         <Text style={styles.settingText}>
-          <Feather name="sun" size={22.5} color={"gray"}/>&nbsp;
-          Light Mode
+          <Feather name="sun" size={22.5} color={"gray"} />
+          &nbsp; Light Mode
         </Text>
         <Switch
           trackColor={{ false: "#767577", true: "#81b0ff" }}
@@ -42,36 +51,36 @@ const SettingsListScreen = () => {
       </View>
       <View style={styles.settingItem}>
         <Text style={styles.settingText}>
-          <Feather name="github" size={22.5} color={"gray"}/>&nbsp;
-          Author GitHub
+          <Feather name="github" size={22.5} color={"gray"} />
+          &nbsp; Project GitHub
         </Text>
-        <Pressable style={{marginRight: 7.5}}>
-          <Feather name="external-link" size={25} color="gray"/>
+        <Pressable style={{ marginRight: 7.5 }}>
+          <Feather name="external-link" size={25} color="gray" />
         </Pressable>
       </View>
       <View style={styles.settingItem}>
         <Text style={styles.settingText}>
-          <Feather name="bell" size={22.5} color={"gray"}/>&nbsp;
-          About
+          <Feather name="bell" size={22.5} color={"gray"} />
+          &nbsp; About
         </Text>
-        <Pressable style={{marginRight: 7.5}}>
-          <Feather name="external-link" size={25} color="gray"/>
+        <Pressable style={{ marginRight: 7.5 }}>
+          <Feather name="external-link" size={25} color="gray" />
         </Pressable>
       </View>
       <View style={styles.settingItem}>
         <Text style={styles.settingText}>
-          <Feather name="alert-circle" size={22.5} color={"gray"}/>&nbsp;
-          Privacy Policy
+          <Feather name="alert-circle" size={22.5} color={"gray"} />
+          &nbsp; Privacy Policy
         </Text>
-        <Pressable style={{marginRight: 7.5}}>
-          <Feather name="external-link" size={25} color="gray"/>
+        <Pressable style={{ marginRight: 7.5 }}>
+          <Feather name="external-link" size={25} color="gray" />
         </Pressable>
       </View>
-      <View style={{marginTop: 120, alignItems: "center"}}>
-        <Text style={{fontSize: 27.5, fontWeight: "600", color: "#2B2B2B"}}>
+      <View style={{ marginTop: 120, alignItems: "center" }}>
+        <Text style={{ fontSize: 27.5, fontWeight: "600", color: "#2B2B2B" }}>
           recetta
         </Text>
-        <Text style={{fontSize: 17.5, fontWeight: "400", color: "gray"}}>
+        <Text style={{ fontSize: 17.5, fontWeight: "400", color: "gray" }}>
           The recipe encyclopedia.
         </Text>
       </View>

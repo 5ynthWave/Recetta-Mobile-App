@@ -5,10 +5,15 @@ import { useLocalSearchParams } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { Feather } from "@expo/vector-icons";
 import axios from "axios";
+import { useAtom } from "jotai";
+import { activeRecipeAtom, Recipe } from "@/mockdb/atoms";
 
 const iconArray = ["clock", "users", "sun", "layers"];
 
 export default function RecipeDetailScreen() {
+  // For knowing what the active recipe is
+  const [activeRecipe, setActiveRecipe] = useAtom(activeRecipeAtom);
+
   const item: { strMeal: string; strMealThumb: string; idMeal: string } =
     useLocalSearchParams();
   console.log(typeof item.idMeal);
@@ -17,6 +22,11 @@ export default function RecipeDetailScreen() {
 
   useEffect(() => {
     getMealData(item.idMeal);
+    // Cleanup activeRecipe when the component unmounts (gets destroyed),
+    // note that it happens on unmount because the useEffect has an empty dependency array
+    return () => {
+      setActiveRecipe(null);
+    };
   }, []);
 
   // Get the recipes from the API ID
@@ -30,6 +40,7 @@ export default function RecipeDetailScreen() {
       // Check that the response is valid
       if (response && response.data) {
         setMeal(response.data.meals[0]);
+        setActiveRecipe({ ...response.data.meals[0] } as Recipe);
       }
     } catch (err: any) {
       console.error("An error has occurred: ", err.message);
