@@ -122,9 +122,9 @@ const RecipeList = () => {
         <Feather
           name="search"
           size={25}
-          color="black"
+          color="#2B2B2B"
           styles={{ marginRight: 15 }}
-        />
+        />&nbsp;&nbsp;&nbsp;
         <TextInput
           style={{ fontSize: 17.5, fontWeight: "500" }}
           placeholder="Search for recipes"

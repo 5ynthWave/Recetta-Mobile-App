@@ -150,16 +150,17 @@ export default function RecipeDetailScreen() {
               </View>
             );
           })}
-          <Text style={{ marginBottom: 30 }}></Text>
+          <Text style={{ marginBottom: 40 }}></Text>
         </View>
       </View>
 
       {/* Instructions Section */}
-      <View style={{ margin: 12 }}></View>
+      <View style={{ margin: 30 }}></View>
       <View
         style={{
           backgroundColor: "#2B2B2B",
-          borderRadius: 15,
+          borderTopLeftRadius: 15,
+          borderTopRightRadius: 15,
           shadowColor: "black",
           shadowOffset: {
             width: 0,
@@ -177,7 +178,7 @@ export default function RecipeDetailScreen() {
         </Text>
         <Text
           style={{
-            marginLeft: 31.5,
+            marginHorizontal: 31.5,
             fontWeight: 400,
             fontSize: 20,
             color: "white",
@@ -185,7 +186,7 @@ export default function RecipeDetailScreen() {
         >
           {meal.strInstructions}
         </Text>
-        <Text style={{ marginBottom: 150 }}></Text>
+        <Text style={{ marginBottom: 160 }}></Text>
       </View>
     </ScrollView>
   );
@@ -205,7 +206,7 @@ const RecipeInfoChip = ({
       <Feather
         name={iconArray[idx] as any}
         size={54}
-        color="black"
+        color="gray"
         style={{
           backgroundColor: "white",
           borderRadius: 1000,
