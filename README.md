@@ -1,7 +1,7 @@
 # About this project
 
 ## Project status
-Project development is still in progress.
+Project development is complete. This is a mock-up app, so no further implementations are CURRENTLY needed.
 
 ## Description
 The Recetta mobile application is designed to lookup food recipes that have been published on the 
